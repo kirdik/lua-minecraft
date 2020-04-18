@@ -32,3 +32,4 @@ function cut()
 end
 find()
 print("EXIT")
+111111
