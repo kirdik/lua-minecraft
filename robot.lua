@@ -1,5 +1,5 @@
 local robot = require("robot")
-
+-- Не материться в эфире!
 -- функция поиска
 function find()
 t={robot.detect()}
