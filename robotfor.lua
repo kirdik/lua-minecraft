@@ -1,6 +1,6 @@
 local robot = require("robot")
 local way=1
--- функция ghj[jlf
+-- функция поиска
 function forward()
 t={robot.detect()}
     while t[2]=="air" do
@@ -8,31 +8,39 @@ t={robot.detect()}
         t={robot.detect()}
     end
 end
--- функция стрижки (не готова)
+
 function cut()
  print("CUT")
 end
---начало программы
-for i=1, 4 do
+for i=1, 15 do
 forward() 
 if t[2]=="entity" then
 	cut()
-	return
+	return end
 end 
 if way==1 then
     robot.turnLeft()
-    robot.forward()
+    if robot.detect() then
+		way=way-1
+	else
+		robot.forward()
+	end
     robot.turnLeft()
     way=way+1
     forward()
 end
 if way==2 then
     robot.turnRight()
-    robot.forward()
+	if robot.detect() then
+		way=way+1
+	else
+		robot.forward()
+	end
     robot.turnRight()
     way=way-1
 	forward()		
 end
+print(way)
 end
 
 print("EXIT")
